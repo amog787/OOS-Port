@@ -284,7 +284,7 @@ public class DozeSensors {
         private float mMaxRange;
         private boolean mProximityChecking;
         private boolean mRegistered;
-        private int mSensorType = 33171026;
+        private int mSensorType = 33171036;
         private final String mTag = "DozeSensors.PickupCheck";
 
         public void onAccuracyChanged(Sensor sensor, int i) {
@@ -299,7 +299,7 @@ public class DozeSensors {
 
         public void check() {
             if (!this.mFinished && !this.mRegistered) {
-                Sensor defaultSensor = DozeSensors.this.mSensorManager.getDefaultSensor(this.mSensorType);
+                Sensor defaultSensor = DozeSensors.this.mSensorManager.getDefaultSensor(this.mSensorType, true);
                 if (defaultSensor == null) {
                     if (DozeSensors.DEBUG) {
                         Log.d("DozeSensors.PickupCheck", "No sensor found");
