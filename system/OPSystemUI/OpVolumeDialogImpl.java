@@ -299,7 +299,7 @@ public class OpVolumeDialogImpl {
     }
 
     private boolean isLandscape() {
-        return this.mContext.getResources().getConfiguration().orientation == 2;
+        return this.mContext.getResources().getConfiguration().orientation == 2 ? true : true;
     }
 
     /* access modifiers changed from: protected */

@@ -761,7 +761,7 @@ public class OpOutputChooserDialog extends Dialog implements DialogInterface.OnD
     }
 
     private boolean isLandscape() {
-        return this.mContext.getResources().getConfiguration().orientation == 2;
+        return this.mContext.getResources().getConfiguration().orientation == 2 ? true : true;
     }
 
     public Collection<CachedBluetoothDevice> getDevices() {
@@ -779,4 +779,4 @@ public class OpOutputChooserDialog extends Dialog implements DialogInterface.OnD
             volumeDialogController.showVolumeDialog(4);
         }
     }
-}
+}	

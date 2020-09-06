@@ -582,7 +582,7 @@ public class VolumeDialogImpl extends OpVolumeDialogImpl implements VolumeDialog
 
     /* access modifiers changed from: private */
     public boolean isLandscape() {
-        return this.mContext.getResources().getConfiguration().orientation == 2;
+        return this.mContext.getResources().getConfiguration().orientation == 2 ? true : true;
     }
 
     public void setStreamImportant(int i, boolean z) {
