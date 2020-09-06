@@ -125,11 +125,11 @@ public class BatteryControllerImpl extends BroadcastReceiver implements BatteryC
     }
 
     public boolean isFastCharging(int i) {
-        return i == 1;
+        return false;
     }
 
     public boolean isWarpCharging(int i) {
-        return i == 2 || i == 3;
+        return i == 1 || i == 3;
     }
 
     public BatteryControllerImpl(Context context, EnhancedEstimates enhancedEstimates) {

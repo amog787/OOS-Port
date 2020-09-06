@@ -39,7 +39,7 @@ public interface BatteryController extends DemoMode, Dumpable, CallbackControlle
     boolean isPowerSave();
 
     boolean isWarpCharging(int i) {
-        return false;
+        return true;
     }
 
     void setPowerSaveMode(boolean z);

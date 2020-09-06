@@ -24,7 +24,7 @@
 
 .field private static final Rg:Ljava/lang/String; = "BatteryLed"
 
-.field private static final Sg:Ljava/lang/String; = "/sys/class/power_supply/battery/fastchg_status"
+.field private static final Sg:Ljava/lang/String; = "/sys/class/power_supply/battery/status"
 
 .field private static final TAG:Ljava/lang/String; = "FastCharge"
 
@@ -374,7 +374,7 @@
 
     new-instance v1, Ljava/io/File;
 
-    const-string v2, "/sys/class/power_supply/battery/fastchg_status"
+    const-string v2, "/sys/class/power_supply/battery/status"
 
     invoke-direct {v1, v2}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
@@ -393,7 +393,7 @@
 
     move-result-object v4
 
-    const-string v5, "1"
+    const-string v5, "Charging"
 
     invoke-virtual {v4, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -759,7 +759,7 @@
     :cond_0
     new-instance v0, Ljava/io/File;
 
-    const-string v1, "/sys/class/power_supply/battery/fastchg_status"
+    const-string v1, "/sys/class/power_supply/battery/status"
 
     invoke-direct {v0, v1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
