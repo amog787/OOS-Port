@@ -1,10 +1,14 @@
 package com.oneplus.settings;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.widget.Toast;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -45,6 +49,20 @@ public class OPScreenRefreshRate extends SettingsPreferenceFragment implements R
     private int mEnterValue;
     private Handler mHandler = new Handler();
 
+    public static void setRefreshRate(Context context, String str, String str2) {
+        ContentResolver contentResolver = context.getContentResolver();
+        try {
+            ContentValues contentValues = new ContentValues(2);
+            contentValues.put("name", str);
+            contentValues.put("value", str2);
+            contentResolver.insert(Uri.parse("content://settings/system"), contentValues);
+            Toast.makeText(context, "Applied", 0).show();
+        } catch (Exception e) {
+            Toast.makeText(context, "Failed to setConfig", 0).show();
+            e.printStackTrace();
+        }
+    }
+
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.op_screen_refresh_rate_select);
@@ -74,10 +92,16 @@ public class OPScreenRefreshRate extends SettingsPreferenceFragment implements R
             radioButtonPreference.setChecked(true);
             this.m60HzMode.setChecked(false);
             Settings.Global.putInt(this.mContext.getContentResolver(), ONEPLUS_SCREEN_REFRESH_RATE, 2);
+            Context context = this.mContext;
+            setRefreshRate(context, "min_refresh_rate", "120.0");
+            setRefreshRate(context, "peak_refresh_rate", "120.0");
         } else if (emiter == this.m60HzMode) {
             radioButtonPreference.setChecked(false);
             this.m60HzMode.setChecked(true);
             Settings.Global.putInt(this.mContext.getContentResolver(), ONEPLUS_SCREEN_REFRESH_RATE, 1);
+            Context context2 = this.mContext;
+            setRefreshRate(context2, "min_refresh_rate", "60.0");
+            setRefreshRate(context2, "peak_refresh_rate", "60.0");
         }
         delayRefreshUI();
     }
